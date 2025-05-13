@@ -26,7 +26,7 @@ searchToggle.addEventListener('click', () => {
         <td class="data5">${item.berat}</td>
         <td class="data5">${item.lokasi}</td>
         <td class="data5">
-          <button class="text-red-600 hover:text-red-800" onclick="hapusData(${index})">
+          <button class="text-red-600 hover:text-red-800" onclick="hapusDataIkan(${index})">
             <i class="fas fa-trash-alt"></i>
           </button>
         </td>
@@ -34,6 +34,13 @@ searchToggle.addEventListener('click', () => {
       dataTabel.appendChild(row);
     });
   });
+
+  function hapusDataIkan(index) {
+    const dataIkan = JSON.parse(localStorage.getItem('dataIkan')) || [];
+    dataIkan.splice(index, 1);
+    localStorage.setItem('dataIkan', JSON.stringify(dataIkan));
+    window.location.reload();
+  }
 
   function hapusData(index) {
     const dataIkan = JSON.parse(localStorage.getItem('dataIkan')) || [];
